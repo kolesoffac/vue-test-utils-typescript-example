@@ -7,9 +7,12 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "npm run test:unit",
-    "test:unit": "jest"
+    "test:unit": "jest",
+    "sonar": "sonar-scanner"
   },
   "dependencies": {
+    "jest-sonar-reporter": "^2.0.0",
+    "sonarqube-scanner": "^2.5.0",
     "vue": "^2.5.16"
   },
   "devDependencies": {
@@ -34,6 +37,14 @@
     "not ie <= 8"
   ],
   "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*",
+      "!src/main.ts",
+      "!src/App.vue",
+      "!src/**/*.d.*",
+      "!src/**/*__tests__*"
+    ],
     "moduleFileExtensions": [
       "js",
       "ts",
@@ -45,6 +56,7 @@
       "^.+\\.tsx?$": "ts-jest"
     },
     "testURL": "http://localhost/",
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$"
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?|ts?)$",
+    "testResultsProcessor": "jest-sonar-reporter"
   }
 }

@@ -37,6 +37,15 @@ export default Vue.extend({
   props: {
     msg: String,
   },
+  methods: {
+    calc(n) {
+      return n + 1;
+    }
+  },
+  ,
+  mounted() {
+    this.msg1 = this.msg + this.calc(1);
+  },
 });
 </script>
 
